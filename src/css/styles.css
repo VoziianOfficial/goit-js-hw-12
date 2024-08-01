@@ -78,6 +78,41 @@ input:focus{
 }
 
 
+.load-more {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  background: #4e75ff;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .show-more {
   display: block;
   margin: auto;
@@ -93,4 +128,9 @@ input:focus{
   outline: none;
   color: #fff;
   border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+
 }
