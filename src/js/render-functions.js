@@ -1,10 +1,10 @@
-function renderGallery(image) {
+function renderGallery(images) {
     const gallery = document.querySelector(".gallery");
-    const markup = image.map(image => {
-        return `<div> class="gallery-item>
-        <a href="${image.largeImageURL}">
-            <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy"></img>
-        </a>
+    const markup = images.map(image => {
+        return `<div class="gallery-item">
+            <a href="${image.largeImageURL}">
+                <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy"></img>
+            </a>
         </div>`;
     }).join("");
     gallery.insertAdjacentHTML("beforeend", markup);
@@ -16,14 +16,13 @@ function clearGallery() {
 }
 
 function showLoadMoreButton() {
-    const LoadMoreButton = document.querySelector(".load-more");
-    LoadMoreButton.hidden = false;
-};
+    const loadMoreButton = document.querySelector(".load-more");
+    loadMoreButton.hidden = false;
+}
 
-function hiddenLoadMoreButton() {
-    const LoadMoreButton = document.querySelector(".load-more");
-    LoadMoreButton.hidden = true;
-};
+function hideLoadMoreButton() {
+    const loadMoreButton = document.querySelector(".load-more");
+    loadMoreButton.hidden = true;
+}
 
-
-export {renderGallery, clearGallery, showLoadMoreButton, hiddenLoadMoreButton};
+export { renderGallery, clearGallery, showLoadMoreButton, hideLoadMoreButton };
