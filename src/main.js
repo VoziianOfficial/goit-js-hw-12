@@ -1,7 +1,7 @@
-import { fetchImages } from './js/pixabay-api';
+import { fetchImages } from './js/pixabay-api.js';
 import { renderImages, showLoadMoreButton, hideLoadMoreButton, showEndOfCollectionMessage } from './js/render-functions.js';
 import iziToast from 'izitoast';
-import 'izitoast/dist/izitoast.css';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let currentPage = 1;
 let currentQuery = '';
