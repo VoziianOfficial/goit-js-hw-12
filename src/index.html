@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="ru">
+  <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pagination</title>
+
     <link rel="stylesheet" href="./css/styles.css" />
-</head>
-<body>
-    <main>
-        <section>
-            <div class="container">
-                <form class="form">
-                    <input type="text" placeholder="Search images..." data-search>
-                    <button data-search-button type="submit" class="form-btn">Search</button>
-                </form>
-                <ul class="list"></ul>
-                <div class="loader-div">
-                    <span class="loader"></span>
-                </div>
-                <div class="gallery"></div>
-                <button class="load-more" hidden type="button">Load more</button>
-            </div>
-        </section>
-    </main>
-    <script type="module" src="./main.js"></script>
-</body>
+  </head>
+  <body>
+
+    <!-- Форма запиту -->
+    <form class="form-inline search-form">
+      <div class="form-group mx-sm-3 mb-2">
+    
+        <input
+          type="text"
+          class="form-control"
+          name="query"
+          id="searchQuery"
+          placeholder="Search images..."
+          autocomplete="off"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+
+    <!-- Список статей -->
+    <ul class="articles"></ul>
+
+    <!-- Кнопка завантажити ще -->
+    <button
+      type="button"
+      class="btn btn-primary button"
+      data-action="load-more"
+    >
+      <!-- Спінер -->
+      <!-- <span
+        class="spinner-border spinner-border-sm spinner is-hidden"
+        role="status"
+        aria-hidden="true"
+      ></span> -->
+
+      <div class="loader-div"><span class="loader"></span></div>
+      <span class="label">Load more</span>
+    </button>
+    <script src="./main.js" type="module"></script>
+  </body>
 </html>

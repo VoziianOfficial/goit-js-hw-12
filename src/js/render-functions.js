@@ -1,28 +1,31 @@
-function renderGallery(images) {
-    const gallery = document.querySelector(".gallery");
-    const markup = images.map(image => {
-        return `<div class="gallery-item">
-            <a href="${image.largeImageURL}">
-                <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy"></img>
-            </a>
-        </div>`;
-    }).join("");
-    gallery.insertAdjacentHTML("beforeend", markup);
+export function renderImages(images) {
+    const list = document.querySelector('.articles');
+    const markup = images
+        .map(
+            img => `
+            <li>
+                <img src="${img.webformatURL}" alt="${img.tags}" />
+                <a href="${img.largeImageURL}" target="_blank">View</a>
+            </li>`
+        )
+        .join('');
+    list.insertAdjacentHTML('beforeend', markup);
 }
 
-function clearGallery() {
-    const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = "";
+export function showLoadMoreButton() {
+    const button = document.querySelector('.button');
+    button.classList.remove('is-hidden');
 }
 
-function showLoadMoreButton() {
-    const loadMoreButton = document.querySelector(".load-more");
-    loadMoreButton.hidden = false;
+export function hideLoadMoreButton() {
+    const button = document.querySelector('.button');
+    button.classList.add('is-hidden');
 }
 
-function hideLoadMoreButton() {
-    const loadMoreButton = document.querySelector(".load-more");
-    loadMoreButton.hidden = true;
+export function showEndOfCollectionMessage() {
+    iziToast.info({
+        title: 'No more results',
+        message: "We're sorry, but you've reached the end of search results.",
+        position: 'topRight',
+    });
 }
-
-export { renderGallery, clearGallery, showLoadMoreButton, hideLoadMoreButton };
