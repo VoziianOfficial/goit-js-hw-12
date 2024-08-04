@@ -22,7 +22,7 @@ const pixApi = async data => {
 
     return response.data;
   } catch (error) {
-    console.error('Помилка при отриманні даних', error);
+    console.error('Error fetching images', error);
     throw error;
   }
 };

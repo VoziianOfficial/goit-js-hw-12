@@ -64,7 +64,7 @@ form.addEventListener('submit', async e => {
   }
 });
 
-//button more
+
 moreBtn.addEventListener('click', async () => {
   loader.style.display = 'flex';
   const searchRemember = localStorage.getItem('search');
