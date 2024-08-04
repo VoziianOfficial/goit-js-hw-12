@@ -1,23 +1,38 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiKey = "11359528-a3a233b98fbb1427184d51103";
-const URL = "https://pixabay.com/api/";
+const apiKey = '43901454-2f0f1ad212df2deb6dd93021b';
 
-export async function fetchImages(query, page = 1, perPage = 15) {
-    try {
-        const response = await axios.get(BASE_URL, {
-            params: {
-                key: apiKey,
-                q: query,
-                page: page,
-                per_page: perPage,
-                image_type: 'photo',
-                orientation: 'horizontal',
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching images:', error);
-        throw error;
-    }
+
+let currentPage = 1;
+let perPage = 15;
+
+const pixApi = async data => {
+  try {
+    const searchParams = new URLSearchParams({
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
+      page: currentPage,
+      per_page: perPage,
+    });
+
+    const response = await axios.get(
+      `https://pixabay.com/api/?key=${apiKey}&q=${data}&${searchParams}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error('Помилка при отриманні даних', error);
+    throw error;
+  }
+};
+
+function setCurrentPage(page) {
+  currentPage = page;
 }
+
+function getCurrentPage() {
+  return currentPage;
+}
+
+export { pixApi, perPage, setCurrentPage, getCurrentPage };

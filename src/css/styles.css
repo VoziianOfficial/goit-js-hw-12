@@ -1,14 +1,32 @@
-*,
-*::before,
-*::after {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.5;
-  color: #2a2a2a;
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 img {
@@ -17,112 +35,115 @@ img {
   height: auto;
 }
 
-.search-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+form {
   margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 32px;
 }
 
-.button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.button.is-hidden {
-  display: none;
-}
-
-.button > .spinner {
-  display: none;
-  margin-right: 5px;
-}
-
-.button:disabled > .spinner {
-  display: inline-block;
-}
-
-/* Article List */
-.articles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  max-width: calc(100vw - 80px);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-}
-
-.articles li {
-  height: 450px;
-  overflow: hidden;
-}
-
-.articles img {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.articles a {
-  text-decoration: none;
-  color: #2a2a2a;
-}
-
-input{
+input {
   width: 272px;
-    border-radius: 4px;
-    padding-left: 16px;
-    outline: none;
-    border: 2px solid #808080;
-    height: 40px;
-    transition: all ease .25s;
-    font-size: 16px
+  border-radius: 4px;
+  padding: 8px 16px;
+  outline: none;
+  border: 2px solid #808080;
+  height: 40px;
+  transition: all ease 250ms;
+  font-size: 16px;
+}
+
+input::placeholder{
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: 0.04em;
+color: #808080;
 }
 
 input:hover {
   border-color: #212121;
 }
 
-input:focus{
+input:focus {
   border-color: #4e75ff;
+  zoom: 1;
 }
 
-.btn-primary {
+button[type='submit'] {
   padding: 8px 16px;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
   background: #4e75ff;
   border: none;
   outline: none;
   color: #fff;
   border-radius: 8px;
-  cursor: pointer;
 }
 
-.btn-primary:hover {
-  background: #6c8cff;
-
+.list {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
-.button.is-hidden {
-  display: none;
+.card {
+  width: calc((100% - 48px) / 3);
 }
 
-.button:disabled {
-  background: #6c8cff;
-  cursor: not-allowed;
+@media (max-width: 1200px) {
+  .card {
+    width: calc((100% - 24px) / 2);
+  }
 }
 
+@media (max-width: 700px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.card-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-content {
+  padding: 4px 20px;
+  border-bottom: 1px solid #212121;
+  border-left: 1px solid #212121;
+  border-right: 1px solid #212121;
+}
+
+.card-list-li {
+font-weight: 600;
+font-size: 12px;
+letter-spacing: 0.04em;
+color: #2e2f42;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 5px;
+}
 
 .loader-div {
   display: none;
@@ -173,33 +194,20 @@ input:focus{
   }
 }
 
-/* Article List */
-.articles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  max-width: calc(100vw - 80px);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-}
-
-.articles li {
-  height: 450px;
-  overflow: hidden;
-}
-
-.articles img {
+.show-more {
   display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  margin: auto;
+  margin-top: 20px;
+  visibility: hidden;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  background: #4e75ff;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 8px;
 }
 
-.articles a {
-  text-decoration: none;
-  color: #2a2a2a;
-}

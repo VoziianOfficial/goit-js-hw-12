@@ -1,31 +1,65 @@
-export function renderImages(images) {
-    const list = document.querySelector('.articles');
-    const markup = images
-        .map(
-            img => `
-            <li>
-                <img src="${img.webformatURL}" alt="${img.tags}" />
-                <a href="${img.largeImageURL}" target="_blank">View</a>
-            </li>`
-        )
-        .join('');
-    list.insertAdjacentHTML('beforeend', markup);
-}
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-export function showLoadMoreButton() {
-    const button = document.querySelector('.button');
-    button.classList.remove('is-hidden');
-}
+const lightbox = new SimpleLightbox('.card-link', {
+  inlineStyles: false,
+  captionsData: 'alt',
+  captionDelay: 250,
+  disableScroll: true,
+});
 
-export function hideLoadMoreButton() {
-    const button = document.querySelector('.button');
-    button.classList.add('is-hidden');
-}
+const renderImages = (resultData, list) => {
+  const markup = resultData
+    .map(
+      ({
+        largeImageURL,
+        likes,
+        comments,
+        views,
+        downloads,
+        tags,
+        webformatURL,
+      }) => {
+        return `<li class="card">
+                <a class="card-link" href="${largeImageURL}">
+                    <img  class="card-image" src="${webformatURL}" alt="${tags}" /> 
+                </a>
+                <div class="main-content">
+                    <ul class="card-list">
+                        <li class="card-list-li">
+                            <h3>
+                                likes
+                            </h3>
+                            <p>${likes}</p>
+                        </li>
+                        <li class="card-list-li">
+                            <h3>
+                                views
+                            </h3>
+                            <p>${views}</p>
+                        </li>
+                        <li class="card-list-li">
+                            <h3>
+                                comments
+                            </h3>
+                            <p>${comments}</p>
+                        </li>
+                        <li class="card-list-li">
+                            <h3>
+                                downloads
+                            </h3>
+                            <p>${downloads}</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>`;
+      }
+    )
+    .join('');
 
-export function showEndOfCollectionMessage() {
-    iziToast.info({
-        title: 'No more results',
-        message: "We're sorry, but you've reached the end of search results.",
-        position: 'topRight',
-    });
-}
+  list.insertAdjacentHTML('beforeend', markup);
+
+  lightbox.refresh();
+};
+
+export default renderImages;
